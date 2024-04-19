@@ -11,26 +11,25 @@ public class Pessoa {
     @Id
     @SequenceGenerator(name = "seq_cta_pessoa_id", sequenceName = "seq_cta_pessoa_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_cta_pessoa_id", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private long id;
     @Column(name = "nome", nullable = false)
     private String nome;
     @Column(name = "contato", nullable = false)
     private String contato;
 
-    public Pessoa(int id, String nome, String contato) {
+    public Pessoa() {}
+
+    public Pessoa(long id, String nome, String contato) {
         this.id = id;
         this.nome = nome;
         this.contato = contato;
     }
 
-    public Pessoa() {
-    }
 
-
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     public String getNome() {

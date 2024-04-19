@@ -9,21 +9,88 @@ public class Contrato {
     @Id
     @SequenceGenerator(name = "seq_cta_contrato_id", sequenceName = "seq_cta_contrato_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_cta_contrato_id", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private long id;
+    @Column(name = "data_criacao")
+    private String dataCriacao;
+    @Column(name = "data_modificacao")
+    private String dataModificacao;
+    @Column(name = "data_inicio_contrato")
+    private String dataInicioContrato;
+    @Column(name = "data_fim_contrato")
+    private String dataFimContrato;
+    @Column(name = "valor_aluguel")
+    private String valorAluguel;
     @ManyToOne
-    @JoinColumn(name = "casa_id")
+    @JoinColumn(name = "id_casa")
     private Casa casa;
     @ManyToOne
-    @JoinColumn(name = "inquilino_id")
+    @JoinColumn(name = "id_inquilino")
     private Pessoa inquilino;
     @ManyToOne
-    @JoinColumn(name = "locatario_id")
+    @JoinColumn(name = "id_locatario")
     private Pessoa locatario;
-    private String dataCriacao;
-    private String dataModificacao;
-    private String dataInicioContrato;
-    private String dataFimContrato;
-    private String valorAluguel;
+
+    public Contrato() {}
+
+    public Contrato(long id, String dataCriacao, String dataModificacao, String dataInicioContrato, String dataFimContrato, String valorAluguel, Casa casa, Pessoa inquilino, Pessoa locatario) {
+        this.id = id;
+        this.dataCriacao = dataCriacao;
+        this.dataModificacao = dataModificacao;
+        this.dataInicioContrato = dataInicioContrato;
+        this.dataFimContrato = dataFimContrato;
+        this.valorAluguel = valorAluguel;
+        this.casa = casa;
+        this.inquilino = inquilino;
+        this.locatario = locatario;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public void setDataCriacao(String dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public String getDataModificacao() {
+        return dataModificacao;
+    }
+
+    public void setDataModificacao(String dataModificacao) {
+        this.dataModificacao = dataModificacao;
+    }
+
+    public String getDataInicioContrato() {
+        return dataInicioContrato;
+    }
+
+    public void setDataInicioContrato(String dataInicioContrato) {
+        this.dataInicioContrato = dataInicioContrato;
+    }
+
+    public String getDataFimContrato() {
+        return dataFimContrato;
+    }
+
+    public void setDataFimContrato(String dataFimContrato) {
+        this.dataFimContrato = dataFimContrato;
+    }
+
+    public String getValorAluguel() {
+        return valorAluguel;
+    }
+
+    public void setValorAluguel(String valorAluguel) {
+        this.valorAluguel = valorAluguel;
+    }
 
     public Casa getCasa() {
         return casa;
@@ -31,14 +98,6 @@ public class Contrato {
 
     public void setCasa(Casa casa) {
         this.casa = casa;
-    }
-
-    public Pessoa getLocatario() {
-        return locatario;
-    }
-
-    public void setLocatario(Pessoa locatario) {
-        this.locatario = locatario;
     }
 
     public Pessoa getInquilino() {
@@ -49,17 +108,11 @@ public class Contrato {
         this.inquilino = inquilino;
     }
 
-    public Contrato(int id, Casa casa, Pessoa inquilino, Pessoa locatario, String dataCriacao, String dataModificacao, String dataInicioContrato, String dataFimContrato, String valorAluguel) {
-        this.id = id;
-        this.casa = casa;
-        this.inquilino = inquilino;
-        this.locatario = locatario;
-        this.dataCriacao = dataCriacao;
-        this.dataModificacao = dataModificacao;
-        this.dataInicioContrato = dataInicioContrato;
-        this.dataFimContrato = dataFimContrato;
-        this.valorAluguel = valorAluguel;
+    public Pessoa getLocatario() {
+        return locatario;
     }
 
-    public Contrato() {}
+    public void setLocatario(Pessoa locatario) {
+        this.locatario = locatario;
+    }
 }

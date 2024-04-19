@@ -9,29 +9,31 @@ public class Aluguel {
     @Id
     @SequenceGenerator(name = "seq_cta_aluguel_id", sequenceName = "seq_cta_aluguel_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_cta_aluguel_id", strategy = GenerationType.SEQUENCE)
-    private int id;
+    private long id;
+    @Column(name = "status", nullable = false)
     private String status;
+    @Column(name = "mes_referencia", nullable = false)
     private String mesReferencia;
+
 
     @ManyToOne
     @JoinColumn(name = "contrato_id")
     private Contrato contrato;
 
+    public Aluguel() {}
 
-    public Aluguel(int id, String status, String mesReferencia, Contrato contrato) {
+    public Aluguel(long id, String status, String mesReferencia, Contrato contrato) {
         this.id = id;
         this.status = status;
         this.mesReferencia = mesReferencia;
         this.contrato = contrato;
     }
 
-    public Aluguel() {}
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
