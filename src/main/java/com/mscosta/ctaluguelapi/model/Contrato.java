@@ -2,6 +2,8 @@ package com.mscosta.ctaluguelapi.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "cta_contrato")
 public class Contrato {
@@ -11,15 +13,15 @@ public class Contrato {
     @GeneratedValue(generator = "seq_cta_contrato_id", strategy = GenerationType.SEQUENCE)
     private long id;
     @Column(name = "data_criacao")
-    private String dataCriacao;
+    private Date dataCriacao;
     @Column(name = "data_modificacao")
-    private String dataModificacao;
+    private Date dataModificacao;
     @Column(name = "data_inicio_contrato")
-    private String dataInicioContrato;
+    private Date dataInicioContrato;
     @Column(name = "data_fim_contrato")
-    private String dataFimContrato;
+    private Date dataFimContrato;
     @Column(name = "valor_aluguel")
-    private String valorAluguel;
+    private Double valorAluguel;
     @ManyToOne
     @JoinColumn(name = "id_casa")
     private Casa casa;
@@ -32,7 +34,7 @@ public class Contrato {
 
     public Contrato() {}
 
-    public Contrato(long id, String dataCriacao, String dataModificacao, String dataInicioContrato, String dataFimContrato, String valorAluguel, Casa casa, Pessoa inquilino, Pessoa locatario) {
+    public Contrato(long id, Date dataCriacao, Date dataModificacao, Date dataInicioContrato, Date dataFimContrato, Double valorAluguel, Casa casa, Pessoa inquilino, Pessoa locatario) {
         this.id = id;
         this.dataCriacao = dataCriacao;
         this.dataModificacao = dataModificacao;
@@ -52,43 +54,43 @@ public class Contrato {
         this.id = id;
     }
 
-    public String getDataCriacao() {
+    public Date getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(String dataCriacao) {
+    public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getDataModificacao() {
+    public Date getDataModificacao() {
         return dataModificacao;
     }
 
-    public void setDataModificacao(String dataModificacao) {
+    public void setDataModificacao(Date dataModificacao) {
         this.dataModificacao = dataModificacao;
     }
 
-    public String getDataInicioContrato() {
+    public Date getDataInicioContrato() {
         return dataInicioContrato;
     }
 
-    public void setDataInicioContrato(String dataInicioContrato) {
+    public void setDataInicioContrato(Date dataInicioContrato) {
         this.dataInicioContrato = dataInicioContrato;
     }
 
-    public String getDataFimContrato() {
+    public Date getDataFimContrato() {
         return dataFimContrato;
     }
 
-    public void setDataFimContrato(String dataFimContrato) {
+    public void setDataFimContrato(Date dataFimContrato) {
         this.dataFimContrato = dataFimContrato;
     }
 
-    public String getValorAluguel() {
+    public Double getValorAluguel() {
         return valorAluguel;
     }
 
-    public void setValorAluguel(String valorAluguel) {
+    public void setValorAluguel(Double valorAluguel) {
         this.valorAluguel = valorAluguel;
     }
 
