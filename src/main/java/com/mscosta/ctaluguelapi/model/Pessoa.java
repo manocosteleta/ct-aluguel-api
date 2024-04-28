@@ -25,12 +25,14 @@ public class Pessoa {
         this.contato = contato;
     }
 
+    public Pessoa(String nome, String contato) {
+        this.nome = nome;
+        this.contato = contato;
+    }
+
 
     public long getId() {
         return id;
-    }
-    public void setId(long id) {
-        this.id = id;
     }
     public String getNome() {
         return nome;

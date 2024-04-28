@@ -13,7 +13,7 @@ public class Aluguel {
     @Column(name = "status", nullable = false)
     private String status;
     @Column(name = "mes_referencia", nullable = false)
-    private String mesReferencia;
+    private Integer mesReferencia;
 
 
     @ManyToOne
@@ -22,7 +22,7 @@ public class Aluguel {
 
     public Aluguel() {}
 
-    public Aluguel(long id, String status, String mesReferencia, Contrato contrato) {
+    public Aluguel(long id, String status, Integer mesReferencia, Contrato contrato) {
         this.id = id;
         this.status = status;
         this.mesReferencia = mesReferencia;
@@ -45,11 +45,11 @@ public class Aluguel {
         this.status = status;
     }
 
-    public String getMesReferencia() {
+    public Integer getMesReferencia() {
         return mesReferencia;
     }
 
-    public void setMesReferencia(String mesReferencia) {
+    public void setMesReferencia(Integer mesReferencia) {
         this.mesReferencia = mesReferencia;
     }
 
