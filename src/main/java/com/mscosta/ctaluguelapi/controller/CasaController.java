@@ -1,23 +1,35 @@
 package com.mscosta.ctaluguelapi.controller;
 
-import com.mscosta.ctaluguelapi.model.Casa;
+import com.mscosta.ctaluguelapi.dto.request.CasaRequestDto;
+import com.mscosta.ctaluguelapi.dto.response.CasaResponseDto;
 import com.mscosta.ctaluguelapi.service.CasaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@RequestMapping("/casa")
+@RestController
+@RequestMapping("/api/v1/casa")
 public class CasaController {
     @Autowired
     private CasaService casaService;
 
-    @GetMapping("/get")
-    public ResponseEntity<Casa> getCasaById(@RequestParam("id") long id) {
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CasaResponseDto> getCasaById(@PathVariable("id") long id) {
         final var response = casaService.getCasaById(id);
         return new ResponseEntity<>(response, response != null ? org.springframework.http.HttpStatus.OK : org.springframework.http.HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping()
+    public ResponseEntity<Page<CasaResponseDto>> getAllCasas(CasaRequestDto request) {
+        PageRequest pageable = PageRequest.of(request.getPage(), request.getSize());
+        final var response = casaService.getAllCasas(request, pageable);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 }
